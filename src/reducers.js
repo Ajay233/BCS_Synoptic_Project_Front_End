@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 import { notificationReducer } from './notification/reducer'
 import { modalReducer } from './modal/reducer'
+import { userReducer } from './authentication/reducer'
 
 export const rootReducer = (state, action) => {
   switch (action.type) {
@@ -11,6 +12,7 @@ export const rootReducer = (state, action) => {
 }
 
 export const allReducers = combineReducers({
+  userData: userReducer,
   notificationState: notificationReducer,
   modalState: modalReducer,
   form: formReducer
