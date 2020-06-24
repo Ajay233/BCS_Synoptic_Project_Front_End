@@ -1,4 +1,5 @@
 import React from 'react'
+import  { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Notification from '../notification/notification'
 import Modal from '../modal/modal'
@@ -129,6 +130,7 @@ class QuizView extends React.Component {
         <Notification />
         {this.renderModal()}
         <UpdateQuizForm />
+        <Link to="/newQuestion"><i className="fas fa-plus-circle"></i> Add a question</Link>
         {this.renderQuestions()}
       </div>
     );

@@ -1,5 +1,6 @@
-import { getWithParams } from '../../axiosRequests/requests'
+import { getWithParams, post, put } from '../../axiosRequests/requests'
 import { setNotification } from '../../notification/actions'
+import history from '../../history'
 
 export const getQuestions = (param, jwt) => {
   return (dispatch) => {
@@ -8,6 +9,43 @@ export const getQuestions = (param, jwt) => {
         type: "SET_QUESTION_LIST",
         payload: response.data
       })
+    }).catch((error) => {
+      if(error.status === 403){
+        dispatch(setNotification("Session expired - please log back in to continue", "warning", true))
+      } else{
+        dispatch(setNotification(error.response.data, "error", true))
+      }
+    })
+  }
+}
+
+export const createQuestion = (data, jwt) => {
+  return (dispatch) => {
+    post('question/create', data, jwt).then((response) => {
+      dispatch({
+        type: "SET_QUESTION_LIST",
+        payload: response.data
+      })
+      dispatch(setNotification("Question created", "success", true))
+      history.push("/quizView")
+    }).catch((error) => {
+      if(error.status === 403){
+        dispatch(setNotification("Session expired - please log back in to continue", "warning", true))
+      } else{
+        dispatch(setNotification(error.response.data, "error", true))
+      }
+    })
+  }
+}
+
+export const updateQuestion = (data, jwt) => {
+  return (dispatch) => {
+    put('question/update', data, jwt).then((response) => {
+      dispatch({
+        type: "SET_QUESTION_LIST",
+        payload: response.data
+      })
+      dispatch(setNotification("Question updated", "success", true))
     }).catch((error) => {
       if(error.status === 403){
         dispatch(setNotification("Session expired - please log back in to continue", "warning", true))
