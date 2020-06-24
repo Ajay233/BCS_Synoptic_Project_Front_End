@@ -29,7 +29,7 @@ class QuizView extends React.Component {
           onClose={hideModal}
         />
       );
-    } else if(modalState.showModalOne) {
+    } else if(modalState.showModalTwo) {
       return(
         <Modal
           show={modalState.showModalTwo}

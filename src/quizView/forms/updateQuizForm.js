@@ -2,6 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { updateQuiz } from '../actions'
+import { showModalOne } from '../../modal/actions'
 
 class UpdateQuiForm extends React.Component {
 
@@ -29,12 +30,18 @@ class UpdateQuiForm extends React.Component {
     updateQuiz(data, userData.jwt)
   }
 
+  handleDelete = (event) => {
+    event.preventDefault()
+    this.props.showModalOne()
+  }
+
   render(){
     return(
       <div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="name" component={this.renderInput} label="Quiz name:" />
           <button className="button button-standard">Save changes</button>
+          <button className="button button-danger" onClick={this.handleDelete}>Delete Quiz</button>
         </form>
       </div>
     );
@@ -63,4 +70,4 @@ export const validate = (formValues) => {
 
 }
 
-export default connect(mapStateToProps, { updateQuiz })(reduxForm({ form: 'updateQuizForm', validate: validate })(UpdateQuiForm));
+export default connect(mapStateToProps, { updateQuiz, showModalOne })(reduxForm({ form: 'updateQuizForm', validate: validate })(UpdateQuiForm));
