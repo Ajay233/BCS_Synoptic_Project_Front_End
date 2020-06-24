@@ -11,7 +11,7 @@ export const login = (data) => {
           id: response.data.user.id,
           username: response.data.user.username,
           permission: response.data.user.permission,
-          loggedIn: false,
+          loggedIn: true,
           jwt: response.data.jwt
         }
       })

@@ -4,8 +4,8 @@ import { notificationReducer } from './notification/reducer'
 import { modalReducer } from './modal/reducer'
 import { userReducer } from './authentication/reducer'
 import { navBarReducer } from './navBar/reducer'
-import { quizResultsReducer } from './quizSearch/actions'
-import { currentQuizReducer } from './quizView/actions'
+import { quizResultsReducer } from './quizSearch/reducer'
+import { currentQuizReducer } from './quizView/reducer'
 import { questionListReducer } from './questions/reducer'
 
 export const rootReducer = (state, action) => {

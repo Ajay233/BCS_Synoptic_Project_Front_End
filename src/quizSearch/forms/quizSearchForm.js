@@ -21,7 +21,7 @@ class QuizSearchForm extends React.Component {
   }
 
   onSubmit = ({ name }) => {
-    const { getQuizzesByName, userData } this.props
+    const { getQuizzesByName, userData } = this.props
     const param = { name: name }
     getQuizzesByName(param, userData.jwt)
   }
@@ -31,7 +31,7 @@ class QuizSearchForm extends React.Component {
       <div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="name" component={this.renderInput} label="Enter a Quiz name to search for:" />
-          <button className="button button-standard"></button>
+          <button className="button button-standard"><i className="fas fa-search"></i> Search</button>
         </form>
       </div>
     );

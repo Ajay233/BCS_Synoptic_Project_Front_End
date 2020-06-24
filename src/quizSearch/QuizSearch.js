@@ -8,24 +8,30 @@ import QuizResults from './quizResults'
 import { setNotification } from '../notification/actions'
 import { showModalOne, hideModal } from '../modal/actions'
 import { setCurrentQuiz } from '../quizView/actions'
+import { getQuestions } from '../questions/actions'
 import { deleteQuiz } from './actions'
 
-import { del } from 'axiosRequests/requests'
-import history from './history'
+import { del } from '../axiosRequests/requests'
 
 class QuizSearch extends React.Component {
 
   renderResults = () => {
-    const { quizResults, userData, setCurrentQuiz } = this.props
+    const { quizResults, userData, setCurrentQuiz, getQuestions, showModalOne } = this.props
     if(quizResults.length > 0){
-      {this.renderResultHeading()}
-      {this.renderResultHeaders()}
-      <QuizResults
-        quizzes={quizResults}
-        jwt={userData.jwt}
-        permission={userData.permission}
-        setCurrentQuiz={setCurrentQuiz}
-      />
+      return(
+        <div>
+        {this.renderResultHeading()}
+        {this.renderResultHeaders()}
+        <QuizResults
+          quizzes={quizResults}
+          jwt={userData.jwt}
+          permission={userData.permission}
+          setCurrentQuiz={setCurrentQuiz}
+          getQuestions={getQuestions}
+          showModalOne={showModalOne}
+        />
+        </div>
+      );
     } else {
       return null;
     }
@@ -35,7 +41,7 @@ class QuizSearch extends React.Component {
     const { quizResults } = this.props
     return(
       <div className="title-medium">
-        {`${quizResults.length} ${quizResults.length > 1 "Results" : "Result"}`}
+        {`${quizResults.length} ${quizResults.length > 1 ? "Results" : "Result"}`}
       </div>
     );
   }
@@ -51,15 +57,15 @@ class QuizSearch extends React.Component {
   handleDelete = () => {
     const { userData, deleteQuiz, setNotification, hideModal, currentQuiz } = this.props;
     const config = { data: currentQuiz }
-    del('quiz/delete', config, jwt).then((response) => {
+    del('quiz/delete', config, userData.jwt).then((response) => {
       deleteQuiz(currentQuiz)
       setNotification("Quiz deleted", "success", true)
       hideModal()
     }).catch((error) => {
       if(error.status === 403){
-        dispatch(setNotification("Session expired - please log back in to continue", "warning", true))
+        setNotification("Session expired - please log back in to continue", "warning", true)
       } else{
-        dispatch(setNotification(error.response.data, "error", true))
+        setNotification(error.response.data, "error", true)
       }
     })
   }
@@ -77,9 +83,9 @@ class QuizSearch extends React.Component {
         onContinue={this.handleDelete}
         onClose={hideModal}
       />
-      <div>
-
-      </div>
+        <div className="title-large">Quiz Search</div>
+        <QuizSearchForm />
+        {this.renderResults()}
       </div>
     );
   }
@@ -89,7 +95,8 @@ export const mapStateToProps = (state) => {
   return {
     userData: state.userData,
     modalState: state.modalState,
-    quizResults: state.quizResults
+    quizResults: state.quizResults,
+    currentQuiz: state.currentQuiz
   }
 }
 
@@ -99,5 +106,6 @@ export default connect(mapStateToProps,
     showModalOne,
     hideModal,
     deleteQuiz,
-    setCurrentQuiz
+    setCurrentQuiz,
+    getQuestions
   })(QuizSearch);

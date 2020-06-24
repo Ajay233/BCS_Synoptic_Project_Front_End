@@ -3,6 +3,7 @@ import { Router, Route } from 'react-router-dom'
 import Home from './home'
 import LoginForm from './authentication/forms/loginForm'
 import NavBar from './navBar/navBar'
+import QuizSearch from './quizSearch/quizSearch'
 import history from './history'
 
 import "./stylesheets/main.css"
@@ -21,6 +22,7 @@ class App extends React.Component{
           <NavBar />
           <Route path="/" exact render={()=> <Home />} />
           <Route path="/login" render={()=> <LoginForm />} />
+          <Route path="/quizSearch" render={()=> <QuizSearch />} />
         </Router>
       </React.Fragment>
     );

@@ -12,6 +12,7 @@ class NavBar extends React.Component {
     const { logOut, setNotification } = this.props
     logOut();
     setNotification("You have been logged out", "success", true)
+    this.toggleDropDown()
   }
 
   toggleDropDown = () => {

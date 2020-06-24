@@ -1,4 +1,5 @@
 import { getWithParams } from '../../axiosRequests/requests'
+import { setNotification } from '../../notification/actions'
 
 export const getQuestions = (param, jwt) => {
   return (dispatch) => {
