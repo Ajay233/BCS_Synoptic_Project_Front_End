@@ -7,6 +7,8 @@ import QuizSearch from './quizSearch/quizSearch'
 import AllQuizzes from './quizSearch/allQuizzes'
 import QuizView from './quizView/quizView'
 import NewQuestionForm from './questions/forms/newQuestionForm'
+import QuestionView from './questonView/questonView'
+import NewAnswerForm from './answers/forms/newAnswerForm'
 import history from './history'
 
 import "./stylesheets/main.css"
@@ -29,6 +31,8 @@ class App extends React.Component{
           <Route path="/allQuizzes" render={()=> <AllQuizzes />} />
           <Route path="/quizView" render={()=> <QuizView />} />
           <Route path="/newQuestion" render={()=> <NewQuestionForm />} />
+          <Route path="/questonView" render={()=> <QuestionView />} />
+          <Route path="/newAnswer" render={()=> <NewAnswerForm />} />
         </Router>
       </React.Fragment>
     );
