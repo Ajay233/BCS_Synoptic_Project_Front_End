@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { timedAction } from '../utils/timed'
 import { unsetNotification } from './actions'
 
-class  extends React.Component {
+class Notification extends React.Component {
 
   renderNotification = () => {
     const { show, message, type, timed } = this.props.notificationState
@@ -35,4 +35,4 @@ export const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { unsetNotification })();
+export default connect(mapStateToProps, { unsetNotification })(Notification);

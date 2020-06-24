@@ -1,0 +1,9 @@
+.listRow {
+  display: flex;
+  border-bottom: 2px solid black;
+}
+
+.listHeaderRow {
+  display: flex;
+  border-bottom: 2px solid black;
+}
