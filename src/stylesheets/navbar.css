@@ -1,0 +1,31 @@
+.navbar {
+  height: 25px;
+  background-color: black;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.menu{
+  float: right;
+}
+
+.dropdown {
+  width: 150px;
+  background-color: black;
+  float: right;
+}
+
+.dropdown-option {
+  padding: 5px;
+  text-align: center;
+}
+
+.dropdown-link {
+  color: white;
+  text-decoration: none
+}
