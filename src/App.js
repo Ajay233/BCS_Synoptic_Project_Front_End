@@ -8,6 +8,7 @@ import "./stylesheets/inputs.css"
 import "./stylesheets/buttons.css"
 import "./stylesheets/lists.css"
 import "./stylesheets/notification.css"
+import "./stylesheets/modal.css"
 
 class App extends React.Component{
   render(){
