@@ -46,7 +46,7 @@ class QuestionView extends React.Component {
 
   renderAnswers = () => {
     const { answerList, userData, setCurrentAnswer, showModalTwo } = this.props;
-    if(questionList.length > 0){
+    if(answerList.length > 0){
       return(
         <div>
         {this.renderAnswerHeading()}
@@ -107,7 +107,7 @@ class QuestionView extends React.Component {
 
   handleQuestionDelete = () => {
     const { userData, currentAnswer, hideModal, setNotification, deleteAnswer } = this.props
-    const config = { data: [currentQuestion] }
+    const config = { data: [currentAnswer] }
     del('answer/delete', config, userData.jwt).then((response) => {
       deleteAnswer(currentAnswer)
       hideModal()

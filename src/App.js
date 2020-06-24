@@ -7,7 +7,7 @@ import QuizSearch from './quizSearch/quizSearch'
 import AllQuizzes from './quizSearch/allQuizzes'
 import QuizView from './quizView/quizView'
 import NewQuestionForm from './questions/forms/newQuestionForm'
-import QuestionView from './questonView/questonView'
+import QuestionView from './questions/questionView'
 import NewAnswerForm from './answers/forms/newAnswerForm'
 import history from './history'
 

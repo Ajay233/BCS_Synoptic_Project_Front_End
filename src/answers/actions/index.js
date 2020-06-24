@@ -67,14 +67,14 @@ export const deleteAnswer = (answer) => {
   }
 }
 
-export const setCurrentAnswe = (answer) => {
+export const setCurrentAnswer = (answer) => {
   return {
     type: "SET_CURRENT_ANSWER",
     payload: answer
   }
 }
 
-export const clearCurrentAnswe = () => {
+export const clearCurrentAnswer = () => {
   return {
     type: "SET_CURRENT_ANSWER",
     payload: {}

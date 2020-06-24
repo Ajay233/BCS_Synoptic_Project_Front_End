@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import { createAnswer } from '../actions'
+import { createAnswers } from '../actions'
 
 class NewAnswerForm extends React.Component {
 
@@ -21,13 +21,13 @@ class NewAnswerForm extends React.Component {
   }
 
   onSubmit = ({ answerIndex, description }) => {
-    const { createAnswer, userData, currentQuestion } = this.props
+    const { createAnswers, userData, currentQuestion } = this.props
     const data = {
       questionId: currentQuestion.id,
       answerIndex: answerIndex,
       description: description
     }
-    createAnswer([data], userData.jwt)
+    createAnswers([data], userData.jwt)
   }
 
   render(){
@@ -65,4 +65,4 @@ export const validate = (formValues) => {
 
 }
 
-export default connect(mapStateToProps, { createAnswer })(reduxForm({ form: 'newAnswerForm', validate: validate })(NewAnswerForm));
+export default connect(mapStateToProps, { createAnswers })(reduxForm({ form: 'newAnswerForm', validate: validate })(NewAnswerForm));
