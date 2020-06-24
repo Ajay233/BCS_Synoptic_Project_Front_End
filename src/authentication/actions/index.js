@@ -4,7 +4,7 @@ import history from '../../history'
 
 export const login = (data) => {
   return (dispatch) => {
-    post('auth/login').then((response) => {
+    post('auth/login', data).then((response) => {
       dispatch({
         type:"SET_USER",
         payload: {
@@ -23,7 +23,7 @@ export const login = (data) => {
   }
 }
 
-expot const = logOut = () => {
+export const logOut = () => {
   return {
     type: "RESET_APP"
   }

@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.field {
+  width: fit-content;
+}
+
 .success {
   background-color: rgb(212, 237, 218);
   color: rgb(21, 87, 36);

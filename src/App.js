@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router, Route } from 'react-router-dom'
 import Home from './home'
+import LoginForm from './authentication/forms/loginForm'
 import history from './history'
 
 import "./stylesheets/main.css"
@@ -16,6 +17,7 @@ class App extends React.Component{
       <React.Fragment>
         <Router history={history}>
           <Route path="/" exact render={()=> <Home />} />
+          <Route path="/login" render={()=> <LoginForm />} />
         </Router>
       </React.Fragment>
     );

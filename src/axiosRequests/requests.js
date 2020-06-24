@@ -16,7 +16,7 @@ export const post = (endpoint, data, token=null) => {
   return axios.post(`http://localhost:8080/${endpoint}`, data)
 }
 
-export const postWithParams = (endpoint, data, token=null) => {
+export const postWithParams = (endpoint, customParams, token=null) => {
   setHeader(token);
   return axios.post(`http://localhost:8080/${endpoint}`, null, { params: customParams })
 }
