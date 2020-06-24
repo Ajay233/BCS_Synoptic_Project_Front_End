@@ -21,7 +21,7 @@ export const createQuiz = (data, jwt) => {
     post('quiz/create', data, jwt).then((response) => {
       dispatch({
         type: "SET_CURRENT_QUIZ",
-        payload: action.payload
+        payload: response.data
       })
       dispatch(setNotification("Quiz created, you can now begin adding questions and answers to it", "success", true))
       history.push("/quizView")
@@ -41,7 +41,7 @@ export const updateQuiz = (data, jwt) => {
     put('quiz/update', data, jwt).then((response) => {
       dispatch({
         type: "SET_CURRENT_QUIZ",
-        payload: action.payload
+        payload: response.data
       })
       dispatch(setNotification("Quiz updated", "success", true))
     }).catch((error) => {

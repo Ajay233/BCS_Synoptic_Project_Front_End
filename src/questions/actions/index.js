@@ -17,3 +17,17 @@ export const getQuestions = (param, jwt) => {
     })
   }
 }
+
+export const setCurrentQuestion = (question) => {
+  return {
+    type: "SET_CURRENT_QUESTION",
+    payload: question
+  }
+}
+
+export const clearCurrentQuestion = () => {
+  return {
+    type: "SET_CURRENT_QUESTION",
+    payload: {}
+  }
+}

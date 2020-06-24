@@ -4,3 +4,10 @@ export const questionListReducer = (state=[], action) => {
     default: return state;
   }
 }
+
+export const currentQuestionReducer = (state={}, action) => {
+  switch (action.type) {
+    case "SET_CURRENT_QUESTION": return action.payload;
+    default: return state;
+  }
+}
