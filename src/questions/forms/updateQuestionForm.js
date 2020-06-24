@@ -1,10 +1,10 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { createQuestion } from '../actions'
+import { showModalOne } from "../../modal/actions"
+import { updateQuestion } from '../actions'
 
-class NewQuestionForm extends React.Component {
+class UpdateQuestionForm extends React.Component {
 
   renderInput = (formProps) => {
     return(
@@ -22,23 +22,29 @@ class NewQuestionForm extends React.Component {
   }
 
   onSubmit = ({ questionNumber, description }) => {
-    const { userData, createQuestion, currentQuiz } = this.props
+    const { updateQuestion, userData, currentQuestion } = this.props
     const data = {
-      quizId: currentQuiz.id,
+      id: currentQuestion.id,
+      quizId: currentQuestion.quizId,
       questionNumber: questionNumber,
       description: description
     }
-    createQuestion([data], userData.jwt)
+    updateQuestion([data], userData.jwt)
+  }
+
+  handleDelete = (event) => {
+    event.preventDefault();
+    this.props.showModalOne()
   }
 
   render(){
     return(
       <div>
-        <Link to="/quizView"><i className="fas fa-chevron-left"></i> Back</Link>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-          <Field name="questionNumber" component={this.renderInput} label="Enter a question number" />
-          <Field name="description" component={this.renderInput} label="Enter a description for the question" />
-          <button className="button button-standard">Save</button>
+        <Field name="questionNumber" component={this.renderInput} label="Question number:" />
+        <Field name="description" component={this.renderInput} label="Description:" />
+        <button className="button button-standard">Save changes</button>
+        <button className="button button-danger" onClick={this.handleDelete}>Delete Question</button>
         </form>
       </div>
     );
@@ -47,8 +53,12 @@ class NewQuestionForm extends React.Component {
 
 export const mapStateToProps = (state) => {
   return {
+    initialValues:{
+      questionNumber: state.currentQuestion.questionNumber,
+      description: state.currentQuestion.description
+    },
     userData: state.userData,
-    currentQuiz: state.currentQuiz
+    currentQuestion: state.currentQuestion
   }
 }
 
@@ -70,4 +80,8 @@ export const validate = (formValues) => {
 
 }
 
-export default connect(mapStateToProps, { createQuestion })(reduxForm({ form: 'newQuestionForm', validate: validate })(NewQuestionForm));
+export default connect(mapStateToProps,
+  {
+    showModalOne,
+    updateQuestion
+  })(reduxForm({ form: 'updateQuestionForm', validate: validate })(UpdateQuestionForm));
