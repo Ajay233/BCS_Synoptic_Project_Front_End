@@ -4,6 +4,7 @@ import Home from './home'
 import LoginForm from './authentication/forms/loginForm'
 import NavBar from './navBar/navBar'
 import QuizSearch from './quizSearch/quizSearch'
+import AllQuizzes from './quizSearch/allQuizzes'
 import history from './history'
 
 import "./stylesheets/main.css"
@@ -23,6 +24,7 @@ class App extends React.Component{
           <Route path="/" exact render={()=> <Home />} />
           <Route path="/login" render={()=> <LoginForm />} />
           <Route path="/quizSearch" render={()=> <QuizSearch />} />
+          <Route path="/allQuizzes" render={()=> <AllQuizzes />} />
         </Router>
       </React.Fragment>
     );

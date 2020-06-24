@@ -32,7 +32,7 @@ class NavBar extends React.Component {
 
   renderDropDown = () => {
     const { loggedIn, permission } = this.props.userData
-    const { showDropdown } = this .props.navBarState
+    const { showDropdown } = this.props.navBarState
     return showDropdown ? <DropDown loggedIn={loggedIn} permission={permission} logout={this.logout}/> : null;
   }
 
