@@ -4,6 +4,7 @@ import { notificationReducer } from './notification/reducer'
 import { modalReducer } from './modal/reducer'
 import { userReducer } from './authentication/reducer'
 import { navBarReducer } from './navBar/reducer'
+import { quizResultsReducer } from './quizSearch/actions'
 
 export const rootReducer = (state, action) => {
   switch (action.type) {
@@ -17,5 +18,6 @@ export const allReducers = combineReducers({
   navBarState: navBarReducer,
   notificationState: notificationReducer,
   modalState: modalReducer,
+  quizResults: quizResultsReducer,
   form: formReducer
 })
