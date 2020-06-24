@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import QuizSearchForm from './forms/quizSearchForm'
 import Notification from '../notification/notification'
 import Modal from '../modal/modal'
+import QuizResults from './quizResults'
 
 import { setNotification } from '../notification/actions'
 import { showModalOne, hideModal } from '../modal/actions'
+import { setCurrentQuiz } from '../quizView/actions'
 import { deleteQuiz } from './actions'
 
 import { del } from 'axiosRequests/requests'
@@ -13,16 +15,21 @@ import history from './history'
 
 class QuizSearch extends React.Component {
 
-  // renderResults = () => {
-  //   const { quizResults } = this.props
-  //   if(quizResults.length > 0){
-  //     {this.renderResultHeading()}
-  //     {this.renderResultHeaders()}
-  //
-  //   } else {
-  //     return null;
-  //   }
-  // }
+  renderResults = () => {
+    const { quizResults, userData, setCurrentQuiz } = this.props
+    if(quizResults.length > 0){
+      {this.renderResultHeading()}
+      {this.renderResultHeaders()}
+      <QuizResults
+        quizzes={quizResults}
+        jwt={userData.jwt}
+        permission={userData.permission}
+        setCurrentQuiz={setCurrentQuiz}
+      />
+    } else {
+      return null;
+    }
+  }
 
   renderResultHeading = () => {
     const { quizResults } = this.props
@@ -71,7 +78,7 @@ class QuizSearch extends React.Component {
         onClose={hideModal}
       />
       <div>
-        
+
       </div>
       </div>
     );
@@ -91,5 +98,6 @@ export default connect(mapStateToProps,
     setNotification,
     showModalOne,
     hideModal,
-    deleteQuiz
+    deleteQuiz,
+    setCurrentQuiz
   })(QuizSearch);
