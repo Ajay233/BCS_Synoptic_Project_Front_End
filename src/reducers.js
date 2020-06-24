@@ -7,6 +7,7 @@ import { navBarReducer } from './navBar/reducer'
 import { quizResultsReducer } from './quizSearch/reducer'
 import { currentQuizReducer } from './quizView/reducer'
 import { questionListReducer, currentQuestionReducer } from './questions/reducer'
+import { answerListReducer, currentAnswerReducer } from './answers/actions'
 
 export const rootReducer = (state, action) => {
   switch (action.type) {
@@ -24,5 +25,7 @@ export const allReducers = combineReducers({
   currentQuiz: currentQuizReducer,
   questionList: questionListReducer,
   currentQuestion: currentQuestionReducer,
+  answerList: answerListReducer,
+  currentAnswer: currentAnswerReducer,
   form: formReducer
 })
