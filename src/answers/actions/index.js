@@ -1,5 +1,5 @@
 import { getWithParams } from '../../axiosRequests/requests'
-import { setNotification } from '../../notifications/actions'
+import { setNotification } from '../../notification/actions'
 import history from '../../history'
 
 export const getAnswers = (param, jwt) => {
@@ -30,6 +30,6 @@ export const setCurrentAnswe = (answer) => {
 export const clearCurrentAnswe = () => {
   return {
     type: "SET_CURRENT_ANSWER",
-    payload:
+    payload: {}
   }
 }

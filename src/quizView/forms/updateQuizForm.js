@@ -22,7 +22,7 @@ class UpdateQuiForm extends React.Component {
 
   onSubmit = ({ name }) => {
     const { userData, updateQuiz, currentQuiz } = this.props
-    cons data = {
+    const data = {
       id: currentQuiz.id,
       name: name
     }
@@ -34,7 +34,7 @@ class UpdateQuiForm extends React.Component {
       <div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="name" component={this.renderInput} label="Quiz name:" />
-          <button className="button button-standard"></button>
+          <button className="button button-standard">Save changes</button>
         </form>
       </div>
     );
@@ -43,7 +43,7 @@ class UpdateQuiForm extends React.Component {
 
 export const mapStateToProps = (state) => {
   return {
-    initialState: {
+    initialValues: {
       name: state.currentQuiz.name
     },
     userData: state.userData,

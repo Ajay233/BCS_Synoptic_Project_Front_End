@@ -9,11 +9,15 @@ import { setNotification } from '../notification/actions'
 import { showModalOne, hideModal } from '../modal/actions'
 import { setCurrentQuiz } from '../quizView/actions'
 import { getQuestions } from '../questions/actions'
-import { deleteQuiz } from './actions'
+import { deleteQuiz, clearQuizResults } from './actions'
 
 import { del } from '../axiosRequests/requests'
 
 class QuizSearch extends React.Component {
+
+  componentWillUnmount(){
+    this.props.clearQuizResults();
+  }
 
   renderResults = () => {
     const { quizResults, userData, setCurrentQuiz, getQuestions, showModalOne } = this.props
@@ -107,5 +111,6 @@ export default connect(mapStateToProps,
     hideModal,
     deleteQuiz,
     setCurrentQuiz,
-    getQuestions
+    getQuestions,
+    clearQuizResults
   })(QuizSearch);

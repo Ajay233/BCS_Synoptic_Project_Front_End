@@ -7,7 +7,7 @@ import { navBarReducer } from './navBar/reducer'
 import { quizResultsReducer } from './quizSearch/reducer'
 import { currentQuizReducer } from './quizView/reducer'
 import { questionListReducer, currentQuestionReducer } from './questions/reducer'
-import { answerListReducer, currentAnswerReducer } from './answers/actions'
+import { answerListReducer, currentAnswerReducer } from './answers/reducer'
 
 export const rootReducer = (state, action) => {
   switch (action.type) {

@@ -44,3 +44,10 @@ export const deleteQuiz = (quiz) => {
     payload: quiz
   }
 }
+
+export const clearQuizResults = () => {
+  return {
+    type: "SET_QUIZ_RESULTS",
+    payload: []
+  }
+}
