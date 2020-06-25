@@ -11,7 +11,6 @@ export const allAnswersSmaller = (state, answer) => {
 }
 
 export const insertQuestion = (state, question) => {
-  console.log(allQuestionsSmaller(state, question))
   if(state.length === 0 || allQuestionsSmaller(state, question)){
     return [...state, question]
   } else {
@@ -30,7 +29,6 @@ export const insertAnswer = (state, answer) => {
   if(state.length === 0 || allAnswersSmaller(state, answer)){
     return [...state, answer]
   } else {
-    console.log("using insert answer")
     let newState = state.slice()
     for(let i = 0; i < state.length; i++){
       if(state[i].answerIndex > answer.answerIndex){
@@ -47,7 +45,6 @@ export const sortUpdatedQuestion = (state, question) => {
     return state.map(element => question)
   } else {
     let filteredState = state.filter(elem => elem.id !== question.id)
-    console.log(filteredState)
     return insertQuestion(filteredState, question)
   }
 }
