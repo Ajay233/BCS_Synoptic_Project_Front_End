@@ -77,3 +77,31 @@ describe("answerListReducer", () => {
 
   })
 })
+
+describe("currentAnswerReducer", () => {
+  it("set currentAnswer", () => {
+    const initialState = {}
+    const expectedState = {id:1, answerIndex: "A"}
+    const action = {
+      type: "SET_CURRENT_ANSWER",
+      payload: {id:1, answerIndex: "A"}
+    }
+
+    const newState = currentAnswerReducer(initialState, action)
+
+    expect(newState).toEqual(expectedState)
+  })
+
+  it("clear state if passed an empty object", () => {
+    const initialState = {id:1, answerIndex: "A"}
+    const expectedState = {}
+    const action = {
+      type: "SET_CURRENT_ANSWER",
+      payload: {}
+    }
+
+    const newState = currentAnswerReducer(initialState, action)
+
+    expect(newState).toEqual(expectedState)
+  })
+})
