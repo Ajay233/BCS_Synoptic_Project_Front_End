@@ -101,7 +101,6 @@ class QuestionView extends React.Component {
         setNotification(error.response.data, "error", true)
       }
     })
-
   }
 
   handleAnswerDelete = () => {
@@ -118,7 +117,34 @@ class QuestionView extends React.Component {
         setNotification(error.response.data, "error", true)
       }
     })
+  }
 
+  renderFormOrDetails = () => {
+    const { permission } = this.props.userData
+    return permission === "Edit" ? <UpdateQuestionForm /> : this.renderDetailsOnly()
+  }
+
+  renderDetailsOnly = () => {
+    const { questionNumber, description } = this.props.currentQuestion
+    return(
+      <div>
+        <div>{`Question number: ${questionNumber}`}</div>
+        <div>{`Description: ${description}`}</div>
+      </div>
+    );
+  }
+
+  addAnswer = () => {
+    return(
+      <Link to="/newAnswer">
+        <i className="fas fa-plus-circle"></i> Add an answer
+      </Link>
+    );
+  }
+
+  renderAddAnswer = () => {
+    const { permission } = this.props.userData
+    return permission === "Edit" ? this.addAnswer() : null;
   }
 
   render(){
@@ -128,8 +154,8 @@ class QuestionView extends React.Component {
         {this.renderModal()}
         <Link to="/quizView"><i className="fas fa-chevron-left"></i> Back</Link>
         <div className="title-large">Question details</div>
-        <UpdateQuestionForm />
-        <Link to="/newAnswer"><i className="fas fa-plus-circle"></i> Add an answer</Link>
+        {this.renderFormOrDetails()}
+        {this.renderAddAnswer()}
         {this.renderAnswers()}
       </div>
     );

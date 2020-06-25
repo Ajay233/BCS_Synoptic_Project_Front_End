@@ -120,7 +120,33 @@ class QuizView extends React.Component {
         setNotification(error.response.data, "error", true)
       }
     })
+  }
 
+  renderFormOrDetails = () => {
+    const { permission } = this.props.userData
+    return permission === "Edit" ? <UpdateQuizForm /> : this.renderDetailsOnly();
+  }
+
+  renderDetailsOnly = () => {
+    const { name } = this.props.currentQuiz
+    return(
+      <div>
+        <div>{`Quiz Name: ${name}`}</div>
+      </div>
+    );
+  }
+
+  addQuestion = () => {
+    return(
+      <Link to="/newQuestion">
+        <i className="fas fa-plus-circle"></i> Add a question
+      </Link>
+    );
+  }
+
+  renderAddQuestion = () => {
+    const { permission } = this.props.userData
+    return permission === "Edit" ? this.addQuestion() : null;
   }
 
   render(){
@@ -129,8 +155,8 @@ class QuizView extends React.Component {
         <Notification />
         {this.renderModal()}
         <div className="title-large">Quiz details</div>
-        <UpdateQuizForm />
-        <Link to="/newQuestion"><i className="fas fa-plus-circle"></i> Add a question</Link>
+        {this.renderFormOrDetails()}
+        {this.renderAddQuestion()}
         {this.renderQuestions()}
       </div>
     );
