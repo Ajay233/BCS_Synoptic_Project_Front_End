@@ -4,7 +4,7 @@ import history from '../../history'
 
 export const getQuestions = (param, jwt) => {
   return (dispatch) => {
-    getWithParams('question/findByQuizId', param, jwt).then((response) => {
+    return getWithParams('question/findByQuizId', param, jwt).then((response) => {
       if(response.status === 204){
         dispatch({
           type: "SET_QUESTION_LIST",
@@ -29,7 +29,7 @@ export const getQuestions = (param, jwt) => {
 
 export const createQuestion = (data, jwt) => {
   return (dispatch) => {
-    post('question/create', data, jwt).then((response) => {
+    return post('question/create', data, jwt).then((response) => {
       dispatch({
         type: "ADD_QUESTION",
         payload: response.data[0]
@@ -48,8 +48,7 @@ export const createQuestion = (data, jwt) => {
 
 export const updateQuestion = (data, jwt) => {
   return (dispatch) => {
-    put('question/update', data, jwt).then((response) => {
-      console.log(response.data[0])
+    return put('question/update', data, jwt).then((response) => {
       dispatch({
         type: "SET_CURRENT_QUESTION",
         payload: response.data[0]

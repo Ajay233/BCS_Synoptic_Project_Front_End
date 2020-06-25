@@ -18,17 +18,19 @@ describe("getAnswers", () => {
   it("should return an action to set the answerList", () => {
     const store = mockStore({})
 
-    const response = [ { id:1 },{ id:2 } ]
+    const response ={
+      data: [{ id:1 },{ id:2 }]
+    }
 
     const expectedAction = {
       type: "SET_ANSWER_LIST",
-      payload: [ { id:1 },{ id:2 } ]
+      payload: [{ id:1 },{ id:2 }]
     }
 
-    store.dispatch(getAnswers()).then(() => {
-      mockAxios.mockResponse(response)
-      expect(store.getActions()).toEqual(expectedAction)
-    })
+    store.dispatch(getAnswers())
+    mockAxios.mockResponse(response)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+
   })
 })
 
@@ -36,17 +38,19 @@ describe("createAnswers", () => {
   it("should return an action to add an answer to the answerList", () => {
     const store = mockStore({})
 
-    const response = [ { id:1 } ]
+    const response = {
+      data: [ { id:1 } ]
+    }
 
     const expectedAction = {
       type: "ADD_ANSWER",
-      payload: [ { id:1 } ]
+      payload: { id:1 }
     }
 
-    store.dispatch(createAnswers()).then(() => {
-      mockAxios.mockResponse(response)
-      expect(store.getActions()).toEqual(expectedAction)
-    })
+    store.dispatch(createAnswers())
+    mockAxios.mockResponse(response)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+
   })
 })
 
@@ -54,17 +58,19 @@ describe("updateAnswers", () => {
   it("should return an action to updated an answer in the answerList", () => {
     const store = mockStore({})
 
-    const response = [ { id:1 } ]
-
-    const expectedAction = {
-      type: "ADD_ANSWER",
-      payload: [ { id:1 } ]
+    const response = {
+      data: [{ id:1 }]
     }
 
-    store.dispatch(updateAnswers()).then(() => {
-      mockAxios.mockResponse(response)
-      expect(store.getActions()).toEqual(expectedAction)
-    })
+    const expectedAction = {
+      type: "UPDATE_ANSWER",
+      payload: { id:1 }
+    }
+
+    store.dispatch(updateAnswers())
+    mockAxios.mockResponse(response)
+    expect(store.getActions()[0]).toEqual(expectedAction)
+
   })
 })
 
