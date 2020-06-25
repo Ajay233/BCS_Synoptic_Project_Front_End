@@ -21,7 +21,7 @@ const DropDown = (props) => {
       <React.Fragment>
         <div className="dropdown-option"><Link className="dropdown-link" to="/quizSearch">Search Quizzes</Link><hr/></div>
         <div className="dropdown-option"><Link className="dropdown-link" to="/allQuizzes">View All Quizzes</Link><hr/></div>
-        { permission !== "Edit" ? null : <div className="dropdown-option"><Link className="dropdown-link" to="/quizNew">Create Quiz</Link><hr/></div> }
+        { permission !== "Edit" ? null : <div className="dropdown-option"><Link className="dropdown-link" to="/newQuiz">Create Quiz</Link><hr/></div> }
         <div className="dropdown-option"><Link className="dropdown-link" to="/" onClick={props.logout}>Log out</Link></div>
       </React.Fragment>
     );

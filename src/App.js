@@ -10,6 +10,7 @@ import NewQuestionForm from './questions/forms/newQuestionForm'
 import QuestionView from './questions/questionView'
 import NewAnswerForm from './answers/forms/newAnswerForm'
 import EditAnswerForm from './answers/forms/editAnswerForm'
+import NewQuizForm from './quizView/forms/newQuizForm'
 import history from './history'
 
 import "./stylesheets/main.css"
@@ -35,6 +36,7 @@ class App extends React.Component{
           <Route path="/questionView" render={()=> <QuestionView />} />
           <Route path="/newAnswer" render={()=> <NewAnswerForm />} />
           <Route path="/editAnswer" render={()=> <EditAnswerForm />} />
+          <Route path="/newQuiz" render={()=> <NewQuizForm />} />
         </Router>
       </React.Fragment>
     );
