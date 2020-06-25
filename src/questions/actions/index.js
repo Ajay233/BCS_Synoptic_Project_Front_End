@@ -49,8 +49,13 @@ export const createQuestion = (data, jwt) => {
 export const updateQuestion = (data, jwt) => {
   return (dispatch) => {
     put('question/update', data, jwt).then((response) => {
+      console.log(response.data[0])
       dispatch({
-        type: "SET_QUESTION_LIST",
+        type: "SET_CURRENT_QUESTION",
+        payload: response.data[0]
+      })
+      dispatch({
+        type: "UPDATE_QUESTION",
         payload: response.data[0]
       })
       dispatch(setNotification("Question updated", "success", true))

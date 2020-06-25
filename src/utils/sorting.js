@@ -40,3 +40,22 @@ export const insertAnswer = (state, answer) => {
     return newState
   }
 }
+
+export const sortUpdatedQuestion = (state, question) => {
+  if(state.length < 2){
+    return state.map(element => question)
+  } else {
+    let filteredState = state.filter(elem => elem.id !== question.id)
+    console.log(filteredState)
+    return insertQuestion(filteredState, question)
+  }
+}
+
+export const sortUpdatedAnswer = (state, answer) => {
+  if(state.length < 2){
+    return state.map(element => answer)
+  } else {
+    let filteredState = state.filter(elem => elem.id !== answer.id)
+    return insertAnswer(filteredState, answer)
+  }
+}
