@@ -72,7 +72,6 @@ class QuizView extends React.Component {
   }
 
   renderQuestionHeading = () => {
-    const { questionList } = this.props
     return(
       <div className="title-medium">
         Questions

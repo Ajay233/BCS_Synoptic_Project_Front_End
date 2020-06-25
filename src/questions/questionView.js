@@ -70,7 +70,6 @@ class QuestionView extends React.Component {
   }
 
   renderAnswerHeading = () => {
-    const { questionList } = this.props
     return(
       <div className="title-medium">
         Answers
@@ -88,7 +87,7 @@ class QuestionView extends React.Component {
   }
 
   handleQuestionDelete = () => {
-    const { userData, currentQuestion, hideModal, setNotification, clearCurrentQuestion, deleteQuestion } = this.props
+    const { userData, currentQuestion, hideModal, setNotification, deleteQuestion } = this.props
     const config = { data: [currentQuestion] }
     del('question/delete', config, userData.jwt).then((response) => {
       deleteQuestion(currentQuestion)
@@ -127,6 +126,7 @@ class QuestionView extends React.Component {
       <div>
         <Notification />
         {this.renderModal()}
+        <Link to="/quizView"><i className="fas fa-chevron-left"></i> Back</Link>
         <UpdateQuestionForm />
         <Link to="/newAnswer"><i className="fas fa-plus-circle"></i> Add an answer</Link>
         {this.renderAnswers()}
