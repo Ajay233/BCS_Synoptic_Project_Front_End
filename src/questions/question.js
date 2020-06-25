@@ -15,24 +15,44 @@ const Question = (props) => {
   }
 
   const renderOptions = () => {
-    return(
-      <div>
-        {renderEditOrView()}
-        <div><Link to="#" onClick={handleDelete}><i className="fas fa-trash-alt"></i> delete</Link></div>
-      </div>
-    );
+    const { permission } = props
+    if(permission !== "Restricted"){
+      return(
+        <div>
+          {renderEditOrView()}
+          {renderDeleteOption()}
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 
   const renderEditOrView = () => {
     const { permission } = props
     if(permission === "Edit"){
-      return <div><Link to="/questionView" onClick={handleEdit}><i className="far fa-edit"></i> edit</Link></div>
+      return <div><Link to="/questionView" onClick={handleEditOrView}><i className="far fa-edit"></i> edit</Link></div>
     } else {
-      return <div><Link to="/questionView" onClick={handleEdit}><i className="far fa-eye"></i> view</Link></div>
+      return <div><Link to="/questionView" onClick={handleEditOrView}><i className="far fa-eye"></i> view</Link></div>
     }
   }
 
-  const handleEdit = () => {
+  const renderDeleteOption = () => {
+    const { permission } = props
+    if(permission === "Edit"){
+      return(
+        <div>
+          <Link to="#" onClick={handleDelete}>
+            <i className="fas fa-trash-alt"></i> delete
+          </Link>
+        </div>
+      );
+    } else {
+      return null
+    }
+  }
+
+  const handleEditOrView = () => {
     const {jwt, getAnswers, setCurrentQuestion, question} = props;
     const param = {questionId: question.id}
     getAnswers(param, jwt)

@@ -17,7 +17,7 @@ const QuizResult = (props) => {
     return(
       <div>
         {renderEditOrView()}
-        <div><Link to="#" onClick={handleDelete}><i className="fas fa-trash-alt"></i> delete</Link></div>
+        {renderDeleteOption()}
       </div>
     );
   }
@@ -28,6 +28,19 @@ const QuizResult = (props) => {
       return <div><Link to="/quizView" onClick={handleEdit}><i className="far fa-edit"></i> edit</Link></div>
     } else {
       return <div><Link to="/quizView" onClick={handleEdit}><i className="far fa-eye"></i> view</Link></div>
+    }
+  }
+
+  const renderDeleteOption = () => {
+    const { permission } = props
+    if(permission === "Edit"){
+      return(
+        <div>
+          <Link to="#" onClick={handleDelete}>
+            <i className="fas fa-trash-alt"></i> delete
+          </Link>
+        </div>
+      );
     }
   }
 
