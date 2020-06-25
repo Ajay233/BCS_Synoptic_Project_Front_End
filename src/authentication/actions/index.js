@@ -4,7 +4,7 @@ import history from '../../history'
 
 export const login = (data) => {
   return (dispatch) => {
-    post('auth/login', data).then((response) => {
+    return post('auth/login', data).then((response) => {
       dispatch({
         type:"SET_USER",
         payload: {

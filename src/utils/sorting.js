@@ -1,6 +1,6 @@
 export const allQuestionsSmaller = (state, question) => {
   return state.every(function(element){
-    return element.questionNumber > question.questionNumber
+    return element.questionNumber < question.questionNumber
   })
 }
 
@@ -11,6 +11,7 @@ export const allAnswersSmaller = (state, answer) => {
 }
 
 export const insertQuestion = (state, question) => {
+  console.log(allQuestionsSmaller(state, question))
   if(state.length === 0 || allQuestionsSmaller(state, question)){
     return [...state, question]
   } else {
