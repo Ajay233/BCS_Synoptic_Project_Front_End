@@ -26,9 +26,9 @@ const Answer = (props) => {
   const renderEditOrView = () => {
     const { permission } = props
     if(permission === "Edit"){
-      return <div><Link to="/answerView" onClick={handleEdit}><i className="far fa-edit"></i> edit</Link></div>
+      return <div><Link to="/editAnswer" onClick={handleEdit}><i className="far fa-edit"></i> edit</Link></div>
     } else {
-      return <div><Link to="/answerView" onClick={handleEdit}><i className="far fa-eye"></i> view</Link></div>
+      return <div><Link to="/editAnswer" onClick={handleEdit}><i className="far fa-eye"></i> view</Link></div>
     }
   }
 

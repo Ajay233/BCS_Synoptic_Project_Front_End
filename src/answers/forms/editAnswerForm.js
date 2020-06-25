@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import { createAnswers } from '../actions'
+import { updateAnswers } from '../actions'
 
-class NewAnswerForm extends React.Component {
+class EditAnswerForm extends React.Component {
 
   renderInput = (formProps) => {
     return(
@@ -22,24 +22,25 @@ class NewAnswerForm extends React.Component {
   }
 
   onSubmit = ({ answerIndex, description }) => {
-    const { createAnswers, userData, currentQuestion } = this.props
+    const { updateAnswers, userData, currentAnswer } = this.props
     const data = {
-      questionId: currentQuestion.id,
+      id: currentAnswer.id,
+      questionId: currentAnswer.questionId,
       answerIndex: answerIndex.toUpperCase(),
       description: description
     }
-    createAnswers([data], userData.jwt)
+    updateAnswers([data], userData.jwt)
   }
 
   render(){
     return(
       <div>
         <Link to="/questionView"><i className="fas fa-chevron-left"></i> Back</Link>
-        <div className="title-large">Create an Answer</div>
+        <div className="title-large">Update Answer</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="answerIndex" component={this.renderInput} label="Enter an answer index" />
           <Field name="description" component={this.renderInput} label="Enter a description:" />
-          <button className="button button-standard">Save</button>
+          <button className="button button-standard">Save changes</button>
         </form>
       </div>
     );
@@ -48,8 +49,12 @@ class NewAnswerForm extends React.Component {
 
 export const mapStateToProps = (state) => {
   return {
+    initialValues: {
+      answerIndex: state.currentAnswer.answerIndex,
+      description: state.currentAnswer.description
+    },
     userData: state.userData,
-    currentQuestion: state.currentQuestion
+    currentAnswer: state.currentAnswer
   }
 }
 
@@ -73,4 +78,4 @@ export const validate = (formValues) => {
 
 }
 
-export default connect(mapStateToProps, { createAnswers })(reduxForm({ form: 'newAnswerForm', validate: validate })(NewAnswerForm));
+export default connect(mapStateToProps, { updateAnswers })(reduxForm({ form: 'editAnswerForm', validate: validate })(EditAnswerForm));
