@@ -11,8 +11,8 @@ const Modal = (props) => {
             <div className="modal-header">{props.title}</div>
             <div className="modal-message">{props.message}</div>
             <div className="modal-actions">
-              <button className="button button-standard" onClick={props.onContinue}>Continue</button>
-              <button className="button button-standard" onClick={props.onClose}>Cancel</button>
+              <button data-testid="modal-continue-button" className="button button-standard" onClick={props.onContinue}>Continue</button>
+              <button data-testid="modal-cancel-button" className="button button-standard" onClick={props.onClose}>Cancel</button>
             </div>
           </div>
         </div>, document.querySelector("#modal")
