@@ -4,7 +4,7 @@ import history from '../../history'
 
 export const getAnswers = (param, jwt) => {
   return (dispatch) => {
-    getWithParams('answer/findByQuestionId', param, jwt).then((response) => {
+    return getWithParams('answer/findByQuestionId', param, jwt).then((response) => {
       if(response.status === 204){
         dispatch({
           type: "SET_ANSWER_LIST",
@@ -30,7 +30,7 @@ export const getAnswers = (param, jwt) => {
 
 export const createAnswers = (data, jwt) => {
   return (dispatch) => {
-    post('answer/create', data, jwt).then((response) => {
+    return post('answer/create', data, jwt).then((response) => {
       dispatch({
         type: "ADD_ANSWER",
         payload: response.data[0]
@@ -50,7 +50,7 @@ export const createAnswers = (data, jwt) => {
 
 export const updateAnswers = (data, jwt) => {
   return (dispatch) => {
-    put('answer/update', data, jwt).then((response) => {
+    return put('answer/update', data, jwt).then((response) => {
       dispatch({
         type: "UPDATE_ANSWER",
         payload: response.data[0]
