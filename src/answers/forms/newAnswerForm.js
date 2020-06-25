@@ -11,7 +11,7 @@ class NewAnswerForm extends React.Component {
       <div>
         {this.renderError(formProps.meta)}
         <label>{formProps.label}</label>
-        <input {...formProps.input} className="input-standard"/>
+        <input {...formProps.input} className="input-standard full"/>
       </div>
     );
   }

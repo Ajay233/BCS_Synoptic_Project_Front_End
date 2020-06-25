@@ -4,7 +4,8 @@ body {
 }
 
 form {
-  margin: 20px;
+  margin: 20px auto;
+  width: 30%;
 }
 
 .addButton{

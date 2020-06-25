@@ -4,3 +4,15 @@
   border-radius: 5px;
   border: 1px solid black;
 }
+
+.small {
+  width: 30px;
+}
+
+.medium {
+  width: 50%;
+}
+
+.full {
+  width: 100%
+}
