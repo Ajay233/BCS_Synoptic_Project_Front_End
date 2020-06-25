@@ -80,8 +80,8 @@ class QuestionView extends React.Component {
   renderAnswerHeaders = () => {
     return(
       <div className="listHeaderRow">
-        <div>Answer</div>
-        <div>Description</div>
+        <div className="answerIndex">Answer</div>
+        <div className="answerDescription">Description</div>
       </div>
     );
   }
@@ -136,8 +136,8 @@ class QuestionView extends React.Component {
 
   addAnswer = () => {
     return(
-      <Link to="/newAnswer">
-        <i className="fas fa-plus-circle"></i> Add an answer
+      <Link to="/newAnswer" className="addButton link">
+        <i className="fas fa-plus-circle blue"></i> Add an answer
       </Link>
     );
   }

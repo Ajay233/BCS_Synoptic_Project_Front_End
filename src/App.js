@@ -20,6 +20,9 @@ import "./stylesheets/lists.css"
 import "./stylesheets/notification.css"
 import "./stylesheets/modal.css"
 import "./stylesheets/navbar.css"
+import "./stylesheets/questionView.css"
+import "./stylesheets/quizResults.css"
+import "./stylesheets/quizView.css"
 
 class App extends React.Component{
   render(){

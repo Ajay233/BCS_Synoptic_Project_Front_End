@@ -1,0 +1,9 @@
+.quizName{
+  margin-left: 20px;
+  width: 70%;
+}
+
+.quizOptions{
+  display: flex;
+  width: 30%;
+}

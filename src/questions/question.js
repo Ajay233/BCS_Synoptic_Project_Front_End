@@ -6,9 +6,9 @@ const Question = (props) => {
   const renderQuestion = () => {
     const { questionNumber, description } = props.question
     return(
-      <div>
-        <div>{questionNumber}</div>
-        <div>{description}</div>
+      <div className="listRow">
+        <div className="questionNumber">{questionNumber}</div>
+        <div className="questionDescription">{description}</div>
         {renderOptions()}
       </div>
     );
@@ -18,7 +18,7 @@ const Question = (props) => {
     const { permission } = props
     if(permission !== "Restricted"){
       return(
-        <div>
+        <div className="questionOptions">
           {renderEditOrView()}
           {renderDeleteOption()}
         </div>
@@ -31,9 +31,9 @@ const Question = (props) => {
   const renderEditOrView = () => {
     const { permission } = props
     if(permission === "Edit"){
-      return <div><Link to="/questionView" onClick={handleEditOrView}><i className="far fa-edit"></i> edit</Link></div>
+      return <div><Link to="/questionView" onClick={handleEditOrView} className="link"><i className="far fa-edit blue"></i> edit</Link></div>
     } else {
-      return <div><Link to="/questionView" onClick={handleEditOrView}><i className="far fa-eye"></i> view</Link></div>
+      return <div><Link to="/questionView" onClick={handleEditOrView} className="link"><i className="far fa-eye blue"></i> view</Link></div>
     }
   }
 
@@ -42,8 +42,8 @@ const Question = (props) => {
     if(permission === "Edit"){
       return(
         <div>
-          <Link to="#" onClick={handleDelete}>
-            <i className="fas fa-trash-alt"></i> delete
+          <Link to="#" onClick={handleDelete} className="link">
+            <i className="fas fa-trash-alt red"></i> delete
           </Link>
         </div>
       );

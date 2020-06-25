@@ -6,9 +6,9 @@ const Answer = (props) => {
   const renderAnswer = () => {
     const { answerIndex, description } = props.answer
     return(
-      <div>
-        <div>{answerIndex}</div>
-        <div>{description}</div>
+      <div className="listRow">
+        <div className="answerIndex">{answerIndex}</div>
+        <div className="answerDescription">{description}</div>
         {renderOptions()}
       </div>
     );
@@ -18,9 +18,9 @@ const Answer = (props) => {
     const { permission } = props
     if(permission === "Edit" ){
       return(
-        <div>
-          <div><Link to="/editAnswer" onClick={handleEdit}><i className="far fa-edit"></i> edit</Link></div>
-          <div><Link to="#" onClick={handleDelete}><i className="fas fa-trash-alt"></i> delete</Link></div>
+        <div className="answerOptions">
+          <div><Link to="/editAnswer" onClick={handleEdit} className="link"><i className="far fa-edit blue"></i> edit</Link></div>
+          <div><Link to="#" onClick={handleDelete} className="link"><i className="fas fa-trash-alt red"></i> delete</Link></div>
         </div>
       );
     } else {

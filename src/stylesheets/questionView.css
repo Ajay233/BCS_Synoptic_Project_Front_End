@@ -1,0 +1,13 @@
+.answerIndex{
+  margin-left: 20px;
+  width: 20%;
+}
+
+.answerDescription{
+  width: 50%;
+}
+
+.answerOptions{
+  display: flex;
+  width: 30%;
+}

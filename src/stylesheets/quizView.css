@@ -1,0 +1,13 @@
+.questionNumber{
+  margin-left: 20px;
+  width: 20%
+}
+
+.questionDescription{
+  width: 50%
+}
+
+.questionOptions{
+  display: flex;
+  width: 30%
+}

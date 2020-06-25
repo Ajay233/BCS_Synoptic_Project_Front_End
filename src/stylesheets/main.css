@@ -3,12 +3,54 @@ body {
   font-family: arial;
 }
 
+form {
+  margin: 20px;
+}
+
+.addButton{
+  float: right;
+}
+
 .title-large {
   font-size: 35px;
   font-weight: bold;
+  text-align: center;
 }
 
 .title-medium {
+  margin-left: 20px;
   font-size: 25px;
   font-weight: bold;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.link:hover {
+  color: purple;
+  cursor: pointer;
+}
+
+.red{
+  color: rgb(220, 53, 69);
+}
+
+.blue{
+  color: rgb(0, 123, 255);
+}
+
+.green{
+  color: rgb(40, 167, 69);
+}
+
+.yellow{
+  color: rgb(255, 193, 7);
+}
+
+.purple{
+
 }

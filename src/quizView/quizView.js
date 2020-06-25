@@ -82,8 +82,8 @@ class QuizView extends React.Component {
   renderQuestionHeaders = () => {
     return(
       <div className="listHeaderRow">
-        <div>Question Number</div>
-        <div>Description</div>
+        <div className="questionNumber">Question Number</div>
+        <div className="questionDescription">Description</div>
       </div>
     );
   }
@@ -138,8 +138,8 @@ class QuizView extends React.Component {
 
   addQuestion = () => {
     return(
-      <Link to="/newQuestion">
-        <i className="fas fa-plus-circle"></i> Add a question
+      <Link to="/newQuestion" className="addButton link">
+        <i className="fas fa-plus-circle blue"></i> Add a question
       </Link>
     );
   }

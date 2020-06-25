@@ -53,7 +53,7 @@ class QuizSearch extends React.Component {
   renderResultHeaders = () => {
     return(
       <div className="listHeaderRow">
-        <div>Quiz Name</div>
+        <div className="quizName">Quiz Name</div>
       </div>
     );
   }

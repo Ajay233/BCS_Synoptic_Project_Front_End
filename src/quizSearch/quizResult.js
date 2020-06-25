@@ -6,8 +6,8 @@ const QuizResult = (props) => {
   const renderResult = () => {
     const { name } = props.quiz
     return(
-      <div>
-        <div>{name}</div>
+      <div className="listRow">
+        <div className="quizName">{name}</div>
         {renderOptions()}
       </div>
     );
@@ -15,7 +15,7 @@ const QuizResult = (props) => {
 
   const renderOptions = () => {
     return(
-      <div>
+      <div className="quizOptions">
         {renderEditOrView()}
         {renderDeleteOption()}
       </div>
@@ -25,9 +25,9 @@ const QuizResult = (props) => {
   const renderEditOrView = () => {
     const { permission } = props
     if(permission === "Edit"){
-      return <div><Link to="/quizView" onClick={handleEdit}><i className="far fa-edit"></i> edit</Link></div>
+      return <div><Link to="/quizView" onClick={handleEdit} className="link"><i className="far fa-edit blue"></i> edit</Link></div>
     } else {
-      return <div><Link to="/quizView" onClick={handleEdit}><i className="far fa-eye"></i> view</Link></div>
+      return <div><Link to="/quizView" onClick={handleEdit} className="link"><i className="far fa-eye blue"></i> view</Link></div>
     }
   }
 
@@ -36,8 +36,8 @@ const QuizResult = (props) => {
     if(permission === "Edit"){
       return(
         <div>
-          <Link to="#" onClick={handleDelete}>
-            <i className="fas fa-trash-alt"></i> delete
+          <Link to="#" onClick={handleDelete} className="link">
+            <i className="fas fa-trash-alt red"></i> delete
           </Link>
         </div>
       );
