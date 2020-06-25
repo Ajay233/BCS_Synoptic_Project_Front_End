@@ -24,7 +24,7 @@ class NewAnswerForm extends React.Component {
     const { createAnswers, userData, currentQuestion } = this.props
     const data = {
       questionId: currentQuestion.id,
-      answerIndex: answerIndex,
+      answerIndex: answerIndex.toUpperCase(),
       description: description
     }
     createAnswers([data], userData.jwt)
@@ -34,8 +34,9 @@ class NewAnswerForm extends React.Component {
     return(
       <div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-          <Field name="" component={this.renderInput} label="" />
-          <button className="button button-standard"></button>
+          <Field name="answerIndex" component={this.renderInput} label="Enter an answer index" />
+          <Field name="description" component={this.renderInput} label="Enter a description:" />
+          <button className="button button-standard">Save</button>
         </form>
       </div>
     );
@@ -55,6 +56,10 @@ export const validate = (formValues) => {
 
   if(!answerIndex){
     errors.answerIndex = "This field must not be left empty"
+  } else if(!isNaN(answerIndex)){
+    errors.answerIndex = "This should be a single letter e.g. A, B, C, D or E"
+  } else if(answerIndex.length > 1){
+    errors.answerIndex = "This should be a single letter e.g. A, B, C, D or E"
   }
 
   if(!description){

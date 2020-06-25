@@ -9,7 +9,7 @@ import Answers from '../answers/answers'
 import { setNotification } from '../notification/actions'
 import { showModalOne, showModalTwo, hideModal } from '../modal/actions'
 import { setCurrentAnswer, deleteAnswer } from '../answers/actions'
-import { clearCurrentQuestion } from './actions'
+import { clearCurrentQuestion, deleteQuestion } from './actions'
 
 import { del } from '../axiosRequests/requests'
 import history from '../history'
@@ -88,10 +88,10 @@ class QuestionView extends React.Component {
   }
 
   handleQuestionDelete = () => {
-    const { userData, currentQuestion, hideModal, setNotification, clearCurrentQuestion } = this.props
-    const config = { data: currentQuestion }
-    del('question/delete', [config], userData.jwt).then((response) => {
-      clearCurrentQuestion(currentQuestion)
+    const { userData, currentQuestion, hideModal, setNotification, clearCurrentQuestion, deleteQuestion } = this.props
+    const config = { data: [currentQuestion] }
+    del('question/delete', config, userData.jwt).then((response) => {
+      deleteQuestion(currentQuestion)
       hideModal()
       setNotification("Question deleted", "success", true)
       history.push("/quizView")
@@ -105,7 +105,7 @@ class QuestionView extends React.Component {
 
   }
 
-  handleQuestionDelete = () => {
+  handleAnswerDelete = () => {
     const { userData, currentAnswer, hideModal, setNotification, deleteAnswer } = this.props
     const config = { data: [currentAnswer] }
     del('answer/delete', config, userData.jwt).then((response) => {
@@ -141,7 +141,7 @@ export const mapStateToProps = (state) => {
     modalState: state.modalState,
     currentQuestion: state.currentQuestion,
     answerList: state.answerList,
-    currenAnswer: state.currenAnswer
+    currentAnswer: state.currentAnswer
   }
 }
 
@@ -153,5 +153,6 @@ export default connect(mapStateToProps,
     setNotification,
     setCurrentAnswer,
     deleteAnswer,
-    clearCurrentQuestion
+    clearCurrentQuestion,
+    deleteQuestion
   })(QuestionView);

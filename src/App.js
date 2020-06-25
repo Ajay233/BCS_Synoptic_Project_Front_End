@@ -31,7 +31,7 @@ class App extends React.Component{
           <Route path="/allQuizzes" render={()=> <AllQuizzes />} />
           <Route path="/quizView" render={()=> <QuizView />} />
           <Route path="/newQuestion" render={()=> <NewQuestionForm />} />
-          <Route path="/questonView" render={()=> <QuestionView />} />
+          <Route path="/questionView" render={()=> <QuestionView />} />
           <Route path="/newAnswer" render={()=> <NewAnswerForm />} />
         </Router>
       </React.Fragment>

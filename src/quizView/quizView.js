@@ -93,7 +93,7 @@ class QuizView extends React.Component {
     const { userData, currentQuiz, hideModal, setNotification, clearCurrentQuiz } = this.props
     const config = { data: currentQuiz }
     del('quiz/delete', config, userData.jwt).then((response) => {
-      clearCurrentQuiz(currentQuiz)
+      clearCurrentQuiz()
       hideModal()
       setNotification("Quiz deleted", "success", true)
       history.push("/quizSearch")

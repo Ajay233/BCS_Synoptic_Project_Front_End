@@ -1,7 +1,7 @@
 export const questionListReducer = (state=[], action) => {
   switch (action.type) {
     case "SET_QUESTION_LIST": return action.payload;
-    case "DELETE_QUESTION": return state.filter(question => question.id != action.payload.id)
+    case "DELETE_QUESTION": return state.filter(question => question !== action.payload)
     default: return state;
   }
 }

@@ -5,10 +5,18 @@ import history from '../../history'
 export const getQuestions = (param, jwt) => {
   return (dispatch) => {
     getWithParams('question/findByQuizId', param, jwt).then((response) => {
-      dispatch({
-        type: "SET_QUESTION_LIST",
-        payload: response.data
-      })
+      if(response.status === 204){
+        dispatch({
+          type: "SET_QUESTION_LIST",
+          payload: []
+        })
+        dispatch(setNotification("There are currently no questions for this quiz", "success", true))
+      } else {
+        dispatch({
+          type: "SET_QUESTION_LIST",
+          payload: response.data
+        })
+      }
     }).catch((error) => {
       if(error.status === 403){
         dispatch(setNotification("Session expired - please log back in to continue", "warning", true))
