@@ -79,7 +79,7 @@ describe("answerListReducer", () => {
 })
 
 describe("currentAnswerReducer", () => {
-  it("set currentAnswer", () => {
+  it("should set currentAnswer", () => {
     const initialState = {}
     const expectedState = {id:1, answerIndex: "A"}
     const action = {
@@ -92,7 +92,7 @@ describe("currentAnswerReducer", () => {
     expect(newState).toEqual(expectedState)
   })
 
-  it("clear state if passed an empty object", () => {
+  it("should clear state if passed an empty object", () => {
     const initialState = {id:1, answerIndex: "A"}
     const expectedState = {}
     const action = {
@@ -103,5 +103,15 @@ describe("currentAnswerReducer", () => {
     const newState = currentAnswerReducer(initialState, action)
 
     expect(newState).toEqual(expectedState)
+  })
+
+  it("should just return state if an action is unrecognised", () => {
+    const initialState = {id:1, answerIndex: "A"}
+    const action = {
+      type: "UNRECOGNISED_ACTION"
+    }
+
+    const newState = currentAnswerReducer(initialState, action)
+    expect(newState).toEqual(initialState)
   })
 })

@@ -37,4 +37,21 @@ describe("userReducer", () => {
     const newState = userReducer(initialState, action)
     expect(newState).toEqual(expectedState)
   })
+
+  it("should just return state if an action is unrecognised", () => {
+    const initialState = {
+      id: "",
+      username: "",
+      permission: "",
+      loggedIn: false,
+      jwt: ""
+    }
+
+    const action = {
+      type: "UNRECOGNISED_ACTION"
+    }
+
+    const newState = userReducer(initialState, action)
+    expect(newState).toEqual(initialState)
+  })
 })
