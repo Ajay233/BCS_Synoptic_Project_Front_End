@@ -31,8 +31,8 @@ export const createQuestion = (data, jwt) => {
   return (dispatch) => {
     post('question/create', data, jwt).then((response) => {
       dispatch({
-        type: "SET_QUESTION_LIST",
-        payload: response.data
+        type: "ADD_QUESTION",
+        payload: response.data[0]
       })
       dispatch(setNotification("Question created", "success", true))
       history.push("/quizView")
@@ -51,7 +51,7 @@ export const updateQuestion = (data, jwt) => {
     put('question/update', data, jwt).then((response) => {
       dispatch({
         type: "SET_QUESTION_LIST",
-        payload: response.data
+        payload: response.data[0]
       })
       dispatch(setNotification("Question updated", "success", true))
     }).catch((error) => {
