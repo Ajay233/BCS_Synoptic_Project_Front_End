@@ -35,6 +35,7 @@ class NewQuestionForm extends React.Component {
     return(
       <div>
         <Link to="/quizView"><i className="fas fa-chevron-left"></i> Back</Link>
+        <div className="title-large">Add a Question</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="questionNumber" component={this.renderInput} label="Enter a question number" />
           <Field name="description" component={this.renderInput} label="Enter a description for the question" />

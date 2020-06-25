@@ -127,6 +127,7 @@ class QuestionView extends React.Component {
         <Notification />
         {this.renderModal()}
         <Link to="/quizView"><i className="fas fa-chevron-left"></i> Back</Link>
+        <div className="title-large">Question details</div>
         <UpdateQuestionForm />
         <Link to="/newAnswer"><i className="fas fa-plus-circle"></i> Add an answer</Link>
         {this.renderAnswers()}

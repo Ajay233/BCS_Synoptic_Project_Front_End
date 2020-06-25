@@ -128,6 +128,7 @@ class QuizView extends React.Component {
       <div>
         <Notification />
         {this.renderModal()}
+        <div className="title-large">Quiz details</div>
         <UpdateQuizForm />
         <Link to="/newQuestion"><i className="fas fa-plus-circle"></i> Add a question</Link>
         {this.renderQuestions()}

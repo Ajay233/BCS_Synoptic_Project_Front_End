@@ -32,6 +32,7 @@ class NewQuizForm extends React.Component {
   render(){
     return(
       <div>
+        <div className="title-large">Create a quiz</div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="name" component={this.renderInput} label="Quiz name:" />
           <button className="button button-standard">Save changes</button>
