@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.field {
+.field, .fit {
   width: fit-content;
 }
 

@@ -8,8 +8,13 @@ form {
   width: 30%;
 }
 
-.addButton{
-  float: right;
+.addButton {
+  margin-top: 10px;
+}
+
+.addButton, .answerLimit {
+  position: absolute;
+  right: 0;
 }
 
 .title-large {

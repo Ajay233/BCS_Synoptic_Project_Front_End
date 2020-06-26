@@ -144,7 +144,20 @@ class QuestionView extends React.Component {
 
   renderAddAnswer = () => {
     const { permission } = this.props.userData
-    return permission === "Edit" ? this.addAnswer() : null;
+    const { answerList } = this.props
+    if(permission === "Edit"){
+      if(answerList.length < 5){
+        return this.addAnswer()
+      } else {
+        return(
+          <div className="answerLimit notification warning fit">
+          <i className="fas fa-exclamation-triangle"></i> Max answer limit reached
+          </div>
+        );
+      }
+    } else {
+      return null;
+    }
   }
 
   render(){
