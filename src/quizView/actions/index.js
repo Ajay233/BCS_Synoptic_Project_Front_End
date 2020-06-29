@@ -1,5 +1,6 @@
 import { put, post } from '../../axiosRequests/requests'
 import { setNotification } from '../../notification/actions'
+import { clearQuestionList } from '../../questions/actions'
 import history from '../../history'
 
 export const setCurrentQuiz = (quiz) => {
@@ -23,6 +24,7 @@ export const createQuiz = (data, jwt) => {
         type: "SET_CURRENT_QUIZ",
         payload: response.data
       })
+      dispatch(clearQuestionList())
       dispatch(setNotification("Quiz created, you can now begin adding questions and answers to it", "success", true))
       history.push("/quizView")
     }).catch((error) => {

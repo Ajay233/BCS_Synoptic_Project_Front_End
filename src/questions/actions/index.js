@@ -75,6 +75,13 @@ export const deleteQuestion = (question) => {
   }
 }
 
+export const clearQuestionList = () => {
+  return {
+    type: "SET_QUESTION_LIST",
+    payload: []
+  }
+}
+
 export const setCurrentQuestion = (question) => {
   return {
     type: "SET_CURRENT_QUESTION",
