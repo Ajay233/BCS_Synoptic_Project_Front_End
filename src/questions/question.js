@@ -19,8 +19,8 @@ const Question = (props) => {
     if(permission !== "Restricted"){
       return(
         <div className="questionOptions">
-          {renderEditOrView()}
           {renderDeleteOption()}
+          {renderEditOrView()}
         </div>
       );
     } else {

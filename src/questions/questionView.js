@@ -62,7 +62,7 @@ class QuestionView extends React.Component {
       );
     } else {
       return(
-        <div>
+        <div className="notification warning fit center">
           There are currently no answers associated with this question
         </div>
       );

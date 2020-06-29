@@ -17,7 +17,9 @@
 .dropdown {
   width: 150px;
   background-color: black;
-  float: right;
+  position: absolute;
+  right: 0;
+  z-index: 1;
 }
 
 .dropdown-option {

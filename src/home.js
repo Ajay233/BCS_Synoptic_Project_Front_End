@@ -10,7 +10,7 @@ class Home extends React.Component {
       <div>
         <Notification />
         <div className="title-large">WebbiSkools Ltd</div>
-        <div className="title-medium">Welcome to the Quiz Manager</div>
+        <div className="title-medium-centered">Welcome to the Quiz Manager</div>
       </div>
     );
   }

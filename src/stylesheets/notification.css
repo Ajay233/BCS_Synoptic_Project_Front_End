@@ -9,6 +9,10 @@
   width: fit-content;
 }
 
+.center {
+  margin: 5px auto !important;
+}
+
 .success {
   background-color: rgb(212, 237, 218);
   color: rgb(21, 87, 36);

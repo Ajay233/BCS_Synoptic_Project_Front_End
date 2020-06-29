@@ -40,8 +40,8 @@ class NavBar extends React.Component {
     return(
       <React.Fragment>
         <div className="navbar">
-          <Link className="navbar-link" to="/">Home</Link>
-          <Link className="navbar-link menu" onClick={this.toggleDropDown} to="#">Menu</Link>
+          <Link className="navbar-link" to="/"><i className="fas fa-home"></i> Home</Link>
+          <Link className="navbar-link menu" onClick={this.toggleDropDown} to="#">Menu <i className="fas fa-caret-down"></i></Link>
         </div>
         {this.renderDropDown()}
       </React.Fragment>

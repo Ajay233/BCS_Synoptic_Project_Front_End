@@ -9,5 +9,6 @@
 
 .answerOptions{
   display: flex;
+  flex-direction: row-reverse;
   width: 30%;
 }

@@ -19,8 +19,8 @@ const Answer = (props) => {
     if(permission === "Edit" ){
       return(
         <div className="answerOptions">
-          <div><Link to="/editAnswer" onClick={handleEdit} className="link"><i className="far fa-edit blue"></i> edit</Link></div>
           <div><Link to="#" onClick={handleDelete} className="link"><i className="fas fa-trash-alt red"></i> delete</Link></div>
+          <div><Link to="/editAnswer" onClick={handleEdit} className="link"><i className="far fa-edit blue"></i> edit</Link></div>
         </div>
       );
     } else {

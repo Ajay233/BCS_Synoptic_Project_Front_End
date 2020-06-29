@@ -5,10 +5,15 @@ import history from '../../history'
 export const getQuizzesByName = (param, jwt) => {
   return (dispatch) => {
     getWithParams('quiz/findByName', param, jwt).then((response) => {
-      dispatch({
-        type: "SET_QUIZ_RESULTS",
-        payload: response.data
-      })
+      if(response.status === 204){
+        dispatch(clearQuizResults())
+        dispatch(setNotification("No quizzes found by that name", "warning", true))
+      } else {
+        dispatch({
+          type: "SET_QUIZ_RESULTS",
+          payload: response.data
+        })
+      }
     }).catch((error) => {
       if(error.status === 403){
         dispatch(setNotification("Session expired - please log back in to continue", "warning", true))
@@ -23,10 +28,15 @@ export const getQuizzesByName = (param, jwt) => {
 export const getAllQuizzes = (jwt) => {
   return (dispatch) => {
     get('quiz/getAll', jwt).then((response) => {
-      dispatch({
-        type: "SET_QUIZ_RESULTS",
-        payload: response.data
-      })
+      if(response.status === 204){
+        dispatch(clearQuizResults())
+        dispatch(setNotification("No quizzes - The quiz manager is currently empty", "warning", true))
+      } else {
+        dispatch({
+          type: "SET_QUIZ_RESULTS",
+          payload: response.data
+        })
+      }
     }).catch((error) => {
       if(error.status === 403){
         dispatch(setNotification("Session expired - please log back in to continue", "warning", true))

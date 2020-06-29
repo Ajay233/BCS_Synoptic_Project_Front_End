@@ -16,8 +16,8 @@ const QuizResult = (props) => {
   const renderOptions = () => {
     return(
       <div className="quizOptions">
-        {renderEditOrView()}
         {renderDeleteOption()}
+        {renderEditOrView()}
       </div>
     );
   }
